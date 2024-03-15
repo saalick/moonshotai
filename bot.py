@@ -3,7 +3,8 @@ import re
 import datetime
 import openai
 import requests
-from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
+from telegram import Update, ChatAction
+from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackContext
 
 TOKEN = "6718784818:AAG_seZy5ahVlyAsvtmvNM6rUBv6DbNYml8"
 OPENAI_API_KEY = "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"
