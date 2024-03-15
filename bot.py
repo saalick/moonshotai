@@ -1,3 +1,5 @@
+
+
 import logging
 import re
 import datetime
@@ -20,18 +22,18 @@ chat_history = {}
 
 def start(update: Update, context: CallbackContext) -> None:
     context.bot.send_message(chat_id=update.effective_chat.id,
-                             text = "👋 *Greetings human,* @{}!\n\n🤖 *What can I do to assist you:*\n\n" \
-       "- */ask:* Chat w/AI bot trained on your data/content.\n" \
-       "  E.g., `/ask can you write me a article about the moon`\n" \
-       "- */price:* Get realtime crypto prices. E.g., `/price btc`\n" \
-       "*Coming soon:*\n" \
-       "- */fetch:* Fetch live crypto stats.\n" \
-       "  E.g., `/fetch $MoonAI`\n" \
-       "- */generate:* Generate HD quality images.\n" \
-       "  E.g., `/generate AI robots planning an invasion`\n" \
-       "- */moon:* Detect most trending projects on different blockchain.\n" \
-       "  E.g., `/moon project under $1 million market cap on Ethereum`\n\n" \
-       "Reply directly to messages with commands or directly chat on group chat."
+                             text="👋 *Greetings human,* @{}!\n\n🤖 *What can I do to assist you:*\n\n"
+                                  "- */ask:* Chat w/AI bot trained on your data/content.\n"
+                                  "  E.g., `/ask can you write me a article about the moon`\n"
+                                  "- */price:* Get realtime crypto prices. E.g., `/price btc`\n"
+                                  "*Coming soon:*\n"
+                                  "- */fetch:* Fetch live crypto stats.\n"
+                                  "  E.g., `/fetch $MoonAI`\n"
+                                  "- */generate:* Generate HD quality images.\n"
+                                  "  E.g., `/generate AI robots planning an invasion`\n"
+                                  "- */moon:* Detect most trending projects on different blockchain.\n"
+                                  "  E.g., `/moon project under $1 million market cap on Ethereum`\n\n"
+                                  "Reply directly to messages with commands or directly chat on group chat."
                              .format(update.message.from_user.username), parse_mode='Markdown')
 
 
@@ -87,25 +89,10 @@ def crypto_price(update, context):
         context.bot.send_message(chat_id=update.effective_chat.id, text=f"Error: {e}")
 
 
-
-
 def welcome_message(update: Update, context: CallbackContext) -> None:
     new_members = update.message.new_chat_members
     for new_member in new_members:
-        context.bot.send_message(chat_id=update.effective_chat.id,
-                                 text="👋 Greetings human, @{}!\n\n🤖 What can I do to assist you:\n\n"
-                                      "- /ask: Chat w/AI bot trained on your data/content.\n"
-                                      "  E.g., /ask can you write me a article about the moon\n"
-                                      "- /price: Get realtime crypto prices. E.g., /price btc\n"
-                                      "Coming soon:\n"
-                                      "- /fetch: Fetch live crypto stats.\n"
-                                      "  E.g., /fetch $MoonAI\n"
-                                      "- /generate: Generate HD quality images.\n"
-                                      "  E.g., /generate AI robots planning an invasion\n"
-                                      "- /moon: Detect most trending projects on different blockchain.\n"
-                                      "  E.g., /moon project under $1 million market cap on Ethereum\n\n"
-                                      "Reply directly to messages with commands or directly chat on group chat."
-                                 .format(new_member.username))
+        start(update, context)  # Calling start function to send the welcome message
 
 
 def main():
