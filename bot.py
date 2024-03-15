@@ -18,8 +18,7 @@ chat_history = {}
 
 
 def start(update: Update, context: CallbackContext) -> None:
-    context.bot.send_message(chat_id=update.effective_chat.id,
-                             text = (
+    text = (
     "👋 *Greetings human,* @{}!\n\n🤖 *What can I do to assist you:*\n\n"
     "- */ask:* Chat w/AI bot trained on your data/content.\n"
     "  E.g., `/ask can you write me a article about the moon`\n"
@@ -36,7 +35,6 @@ def start(update: Update, context: CallbackContext) -> None:
 )
 
 context.bot.send_message(chat_id=update.effective_chat.id, text=text.format(update.message.from_user.username), parse_mode='Markdown')
-
 
 
 def ask(update, context):
