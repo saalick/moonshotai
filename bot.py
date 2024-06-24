@@ -8,7 +8,7 @@ import requests
 from telegram import Update, ChatAction
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackContext
 
-TOKEN = "7265715640:AAE4JiqtlFFV_k2QyE47mNvLBJmGXbiIYBo"
+TOKEN = "7265715640:AAH48RzO321z3_Ks_9DwDYnuDZRLmbanh6E"
 OPENAI_API_KEY = "sk-proj-DZ27T8Y3jFpSWDlbKBAiT3BlbkFJZnVFtUnUaDoQLFbIKwSn"
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
