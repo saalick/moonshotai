@@ -8,8 +8,8 @@ import requests
 from telegram import Update, ChatAction
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackContext
 
-TOKEN = "6718784818:AAG_seZy5ahVlyAsvtmvNM6rUBv6DbNYml8"
-OPENAI_API_KEY = "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"
+TOKEN = "7265715640:AAE4JiqtlFFV_k2QyE47mNvLBJmGXbiIYBo"
+OPENAI_API_KEY = "sk-proj-DZ27T8Y3jFpSWDlbKBAiT3BlbkFJZnVFtUnUaDoQLFbIKwSn"
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 updater = Updater(token=TOKEN, use_context=True)
@@ -22,17 +22,17 @@ chat_history = {}
 
 def start(update: Update, context: CallbackContext) -> None:
     context.bot.send_message(chat_id=update.effective_chat.id,
-                             text="👋 *Greetings human,* @{}!\n\n🤖 *What can I do to assist you:*\n\n"
+                             text="👋 *Greetings human,* @{}!\n\n🤖 * I'm MonsterBrains AI bot. What can I do to assist you:*\n\n"
                                   "- */ask:* Chat w/AI bot trained on your data/content.\n"
                                   "  E.g., `/ask can you write me a article about the moon`\n"
                                   "- */price:* Get realtime crypto prices. E.g., `/price btc`\n"
                                   "*Coming soon:*\n"
                                   "- */fetch:* Fetch live crypto stats.\n"
-                                  "  E.g., `/fetch $MoonAI`\n"
+                                  "  E.g., `/fetch $MONSTER`\n"
                                   "- */generate:* Generate HD quality images.\n"
                                   "  E.g., `/generate AI robots planning an invasion`\n"
                                   "- */moon:* Detect most trending projects on different blockchain.\n"
-                                  "  E.g., `/moon project under $1 million market cap on Ethereum`\n\n"
+                                  "  E.g., `/monster project under $1 million market cap on BASE Chain`\n\n"
                                   "Reply directly to messages with commands or directly chat on group chat."
                              .format(update.message.from_user.username), parse_mode='Markdown')
 
@@ -57,7 +57,7 @@ def ask(update, context):
 
     response = openai.Completion.create(
         engine="gpt-3.5-turbo-instruct",  # Updated model name
-        prompt=f"As the MoonShot AI BOT, a crypto companion, answer this in a funny way:\n{conversation}\n",
+        prompt=f"As the MonsterBrains AI BOT, a crypto companion, belonging to MonsterBrains project, Monster Brains is a crypto project Matt Furie performed a fantastic job using his singularly weird creatures to illustrate the Monster Brains theme. Here, we honor him with this coin and express our gratitude for his artwork!, answer this in a funny way:\n{conversation}\n",
         max_tokens=128,
         n=1,
         stop=None,
