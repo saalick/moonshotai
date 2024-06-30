@@ -77,7 +77,7 @@ def generate(update: Update, context: CallbackContext) -> None:
         "Authorization": f"Bearer {OPENAI_API_KEY}"
     }
     data = {
-        "model": "image-alpha-001",
+        "model": "dall-e-3",
         "prompt": f"Generate an image of {text}",
         "num_images": 1,
         "size": "256x256",
