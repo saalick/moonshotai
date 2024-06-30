@@ -74,7 +74,7 @@ def generate(update: Update, context: CallbackContext) -> None:
     
     headers = {
         "Content-Type": "application/json",
-        "Authorization": f"Bearer {OPENAI_API_KEY}"
+        "Authorization": f"Bearer {sk-proj-DZ27T8Y3jFpSWDlbKBAiT3BlbkFJZnVFtUnUaDoQLFbIKwSn}"
     }
     data = {
         "model": "image-alpha-001",
