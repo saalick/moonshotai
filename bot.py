@@ -1,5 +1,3 @@
-
-
 import logging
 import re
 import datetime
@@ -70,7 +68,31 @@ def ask(update, context):
     # Send the bot's response
     context.bot.send_message(chat_id=update.effective_chat.id, text=response)
 
+def generate(update: Update, context: CallbackContext) -> None:
+    context.bot.send_chat_action(chat_id=update.effective_chat.id, action=ChatAction.TYPING)
+    text = ' '.join(context.args)
+    
+    headers = {
+        "Content-Type": "application/json",
+        "Authorization": f"Bearer {OPENAI_API_KEY}"
+    }
+    data = {
+        "model": "image-alpha-001",
+        "prompt": f"Generate an image of {text}",
+        "num_images": 1,
+        "size": "256x256",
+        "response_format": "url"
+    }
 
+    try:
+        response = requests.post('https://api.openai.com/v1/images/generations', headers=headers, json=data)
+        response.raise_for_status()
+        image_url = response.json()["data"][0]["url"]
+        context.bot.send_photo(chat_id=update.effective_chat.id, photo=image_url)
+    except Exception as e:
+        logging.error(f"Error generating image: {e}")
+        context.bot.send_message(chat_id=update.effective_chat.id, text="Sorry, something went wrong while generating the image.")
+    
 def crypto_price(update, context):
     crypto_symbol = update.message.text[7:].strip().upper()  # Extract the cryptocurrency symbol from the message
 
@@ -95,15 +117,17 @@ def welcome_message(update: Update, context: CallbackContext) -> None:
         start(update, context)  # Calling start function to send the welcome message
 
 
-def main():
+def main() -> None:
     start_handler = CommandHandler('start', start)
     ask_handler = CommandHandler('ask', ask)
     crypto_price_handler = CommandHandler('price', crypto_price)
+    generate_handler = CommandHandler("generate", generate)
     new_members_handler = MessageHandler(Filters.status_update.new_chat_members, welcome_message)
 
     dispatcher.add_handler(start_handler)
     dispatcher.add_handler(ask_handler)
     dispatcher.add_handler(crypto_price_handler)
+    dispatcher.add_handler(generate_handler)
     dispatcher.add_handler(new_members_handler)
 
     updater.start_polling()
