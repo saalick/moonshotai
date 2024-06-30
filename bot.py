@@ -81,6 +81,7 @@ def generate(update: Update, context: CallbackContext) -> None:
         "prompt": f"Generate an image of {text}",
         "num_images": 1,
         "size": "1024x1024",
+        "quality"="hd",
         "response_format": "url"
     }
 
