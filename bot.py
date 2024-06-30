@@ -77,7 +77,7 @@ def generate(update: Update, context: CallbackContext) -> None:
         "Authorization": f"Bearer {OPENAI_API_KEY}"
     }
     data = {
-        "model": "dall-e-3",
+        "model": "dall-e-3",  # Verify this model name
         "prompt": f"Generate an image of {text}",
         "num_images": 1,
         "size": "256x256",
@@ -89,10 +89,13 @@ def generate(update: Update, context: CallbackContext) -> None:
         response.raise_for_status()
         image_url = response.json()["data"][0]["url"]
         context.bot.send_photo(chat_id=update.effective_chat.id, photo=image_url)
-    except Exception as e:
+    except requests.exceptions.RequestException as e:
         logging.error(f"Error generating image: {e}")
+        if response is not None:
+            logging.error(f"Response content: {response.content}")
         context.bot.send_message(chat_id=update.effective_chat.id, text="Sorry, something went wrong while generating the image.")
-    
+
+  
 def crypto_price(update, context):
     crypto_symbol = update.message.text[7:].strip().upper()  # Extract the cryptocurrency symbol from the message
 
