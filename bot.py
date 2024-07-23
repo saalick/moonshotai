@@ -34,7 +34,7 @@ def generate(update: Update, context: CallbackContext) -> None:
     }
     data = {
         "model": "dall-e-3",  # Verify this model name
-        "prompt": f"Generate an image of {text}, make sure image is matching thee prompt, make it funny if relevent, add this only if it's relevant to the prompt like bit content of shiba inu cat wearing an American flag cap",
+        "prompt": f"Generate an image of {text}, make sure image is matching thee prompt, make it funny if relevent, add this only if it's relevant to the prompt like bit content of shiba wearing an American flag cap",
         "num_images": 1,
         "size": "1024x1024",
         "quality": "hd",
