@@ -45,7 +45,7 @@ def generate(update: Update, context: CallbackContext) -> None:
         "prompt": f"Generate an image of {text}, make sure image is matching the prompt, make it funny if relevant, add this only if it's relevant to the prompt like bit content of large aqua color duck wearing a cap backwards and other clothes as well",
         "num_images": 1,
         "size": "1024x1024",
-        "quality": "hd",
+        "quality": "sd",
         "response_format": "url"
     }
 
@@ -54,7 +54,7 @@ def generate(update: Update, context: CallbackContext) -> None:
         response.raise_for_status()
         image_url = response.json()["data"][0]["url"]
         context.bot.send_photo(chat_id=update.effective_chat.id, photo=image_url)
-        time.sleep(2)  # Add a delay of 2 seconds after each request
+        time.sleep(5)  # Add a delay of 2 seconds after each request
     except requests.exceptions.RequestException as e:
         logging.error(f"Error generating image: {e}")
         if response is not None:
