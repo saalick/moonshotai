@@ -57,7 +57,7 @@ def generate(update: Update, context: CallbackContext) -> None:
 
 def main() -> None:
     start_handler = CommandHandler('start', start)
-    generate_handler = CommandHandler("shiba", generate)
+    generate_handler = CommandHandler("ducky", generate)
 
 
     dispatcher.add_handler(start_handler)
