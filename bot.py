@@ -6,8 +6,8 @@ import requests
 from telegram import Update, ChatAction
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackContext
 
-TOKEN = "7344855808:AAGIgDLSZCL0OmKsF_JbPA2CavFjxSjgxiw"
-OPENAI_API_KEY = ""
+TOKEN = "7230686743:AAFUSeKyeV3-g6g-A6r642jwd08lE03t3UM"
+OPENAI_API_KEY = "sk-proj-dgeZZLK3lIHfpsKvRAU1T3BlbkFJ0Cgg1ni9wjpaGhwWUjmw"
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 updater = Updater(token=TOKEN, use_context=True)
@@ -34,7 +34,7 @@ def generate(update: Update, context: CallbackContext) -> None:
     }
     data = {
         "model": "dall-e-3",  # Verify this model name
-        "prompt": f"Generate an image of {text}, make sure image is matching thee prompt, make it funny if relevent, add this only if it's relevant to the prompt like bit content of shiba wearing an American flag cap",
+        "prompt": f"Generate an image of {text}, make sure image is matching the prompt, make it funny if relevent, add this only if it's relevant to the prompt like bit content of ducky wearing a cap backwards",
         "num_images": 1,
         "size": "1024x1024",
         "quality": "hd",
