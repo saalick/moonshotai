@@ -32,7 +32,7 @@ def ask_command(update: Update, context: CallbackContext) -> None:
 
     # Prepare the payload for the Venice AI API
     payload = {
-        "model": "dolphin-23.hb",
+        "model": "llama-3.1-405b",
         "messages": [
             {"role": "system", "content": SYSTEM_MESSAGE},
             {"role": "user", "content": user_message}
