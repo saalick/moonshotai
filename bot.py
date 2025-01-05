@@ -59,7 +59,7 @@ def main():
     app.add_handler(CommandHandler("cackle", cackle))
 
     # Start the bot
-    print("Bot is running...")
+    print("cackle ai Bot is running...")
     app.run_polling()
 
 if __name__ == "__main__":
