@@ -12,7 +12,7 @@ def cackle(update: Update, context: CallbackContext):
     user_input = " ".join(context.args)
 
     if not user_input:
-        update.message.reply_text("Please provide a prompt after the /cackle command.")
+        update.message.reply_text("Please provide a prompt after the /rancor command.")
         return
 
     # Venice API request payload
@@ -40,7 +40,7 @@ def cackle(update: Update, context: CallbackContext):
         response_json = response.json()
 
         # Extract AI's response
-        ai_reply = response_json.get('choices', [{}])[0].get('message', {}).get('content', "Sorry, no response from Venice AI.")
+        ai_reply = response_json.get('choices', [{}])[0].get('message', {}).get('content', "Sorry, no response from api.rancorai.fun")
         update.message.reply_text(ai_reply)
 
     except Exception as e:
@@ -56,7 +56,7 @@ def main():
     dispatcher = updater.dispatcher
 
     # Command handler for /cackle
-    dispatcher.add_handler(CommandHandler("cackle", cackle))
+    dispatcher.add_handler(CommandHandler("rancor", cackle))
 
     # Start the bot
     print("Bot is running...")
