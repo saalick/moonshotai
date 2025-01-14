@@ -49,7 +49,7 @@ def cackle(update: Update, context: CallbackContext):
 # Main function to start the bot
 def main():
     # Replace with your Telegram bot token
-    telegram_bot_token = "7412121016:AAGY8pdpaDr7T1FrQ_TQZBEe3xYVfBHF-FI"
+    telegram_bot_token = "7018143476:AAEix1pK3rQZqBQ6Chj1iI9pTqcDc-ZQzSE"
 
     # Set up updater and dispatcher
     updater = Updater(token=telegram_bot_token, use_context=True)
